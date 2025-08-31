@@ -1,0 +1,21 @@
+# ===============================================
+# 🌽 AgriDiagnostic IA - Dépendances Python
+# ===============================================
+
+# Framework Web
+Flask==2.3.3
+Werkzeug==2.3.7
+
+# Intelligence Artificielle & Machine Learning
+torch==2.0.1
+torchvision==0.15.2
+numpy==1.24.3
+Pillow==10.0.0
+
+# Utilitaires
+python-dotenv==1.0.0
+requests==2.31.0
+
+# Développement (optionnel)
+gunicorn==21.2.0  # Pour production
+flask-cors==4.0.0  # Si besoin de CORS

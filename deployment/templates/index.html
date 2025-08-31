@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌽 Diagnostic IA - Classification des Maladies du Maïs</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-seedling"></i>
+                    <h1>AgriDiagnostic IA</h1>
+                    <span class="subtitle">Classification des Maladies du Maïs</span>
+                </div>
+                <div class="header-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">99.37%</span>
+                        <span class="stat-label">Précision</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Maladies</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1571</span>
+                        <span class="stat-label">Images</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h2>Diagnostic Intelligent des Maladies du Maïs</h2>
+                    <p>Utilisez notre intelligence artificielle avancée pour identifier rapidement et précisément les maladies fongiques affectant vos cultures de maïs. Un diagnostic expert en quelques secondes.</p>
+                </div>
+            </section>
+
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="upload-container">
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-content">
+                            <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                            <h3>Déposez votre image ici</h3>
+                            <p>ou <span class="upload-link" onclick="document.getElementById('fileInput').click()">cliquez pour sélectionner</span></p>
+                            <p class="upload-info">Formats acceptés: JPG, PNG, JPEG | Taille max: 10MB</p>
+                        </div>
+                        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    </div>
+                    
+                    <!-- Preview Section -->
+                    <div class="preview-section" id="previewSection" style="display: none;">
+                        <div class="image-preview">
+                            <img id="previewImage" alt="Image prévisualisée">
+                            <button class="remove-image" id="removeImage">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="analysis-controls">
+                            <button class="btn btn-primary" id="analyzeBtn">
+                                <i class="fas fa-search"></i>
+                                Analyser l'image
+                            </button>
+                            <button class="btn btn-secondary" onclick="resetUpload()">
+                                <i class="fas fa-redo"></i>
+                                Nouvelle image
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Loading Section -->
+            <section class="loading-section" id="loadingSection" style="display: none;">
+                <div class="loading-container">
+                    <div class="loading-spinner">
+                        <div class="spinner"></div>
+                    </div>
+                    <h3>Analyse en cours...</h3>
+                    <p>Notre IA examine votre image pour détecter les signes de maladie</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <span class="progress-text" id="progressText">Initialisation...</span>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-container">
+                    <div class="result-header">
+                        <i class="fas fa-check-circle result-icon"></i>
+                        <h3>Diagnostic Terminé</h3>
+                    </div>
+                    
+                    <div class="result-content">
+                        <div class="prediction-card">
+                            <div class="prediction-header">
+                                <h4>Maladie Détectée</h4>
+                                <span class="confidence-badge" id="confidenceBadge">95%</span>
+                            </div>
+                            <div class="prediction-result">
+                                <div class="disease-info">
+                                    <div class="disease-icon" id="diseaseIcon">🔴</div>
+                                    <div class="disease-details">
+                                        <h5 id="diseaseName">Gray Leaf Spot</h5>
+                                        <p id="diseaseScientific">Cercospora zeae-maydis</p>
+                                    </div>
+                                </div>
+                                <div class="confidence-meter">
+                                    <div class="confidence-bar">
+                                        <div class="confidence-fill" id="confidenceFill"></div>
+                                    </div>
+                                    <span class="confidence-text">Niveau de confiance</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="disease-description">
+                            <h4><i class="fas fa-info-circle"></i> Description de la Maladie</h4>
+                            <div class="description-content" id="diseaseDescription">
+                                <p>La tache grise des feuilles est une maladie fongique majeure du maïs causée par Cercospora zeae-maydis...</p>
+                            </div>
+                        </div>
+
+                        <div class="recommendations">
+                            <h4><i class="fas fa-lightbulb"></i> Recommandations</h4>
+                            <div class="recommendations-grid" id="recommendationsGrid">
+                                <!-- Recommendations will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="alternative-predictions">
+                            <h4><i class="fas fa-chart-bar"></i> Autres Possibilités</h4>
+                            <div class="alternatives-list" id="alternativesList">
+                                <!-- Alternative predictions will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="result-actions">
+                        <button class="btn btn-primary" onclick="downloadReport()">
+                            <i class="fas fa-download"></i>
+                            Télécharger le Rapport
+                        </button>
+                        <button class="btn btn-secondary" onclick="resetAnalysis()">
+                            <i class="fas fa-redo"></i>
+                            Nouvelle Analyse
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Info Section -->
+            <section class="info-section">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4>IA Avancée</h4>
+                        <p>Modèle VGG16 optimisé avec 99.37% de précision sur plus de 1500 images d'entraînement</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>Diagnostic Rapide</h4>
+                        <p>Résultats en moins de 5 secondes pour un diagnostic expert instantané</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Fiabilité Scientifique</h4>
+                        <p>Validation par des experts en phytopathologie et testing rigoureux</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Diseases Info -->
+            <section class="diseases-section">
+                <h3>Maladies Diagnostiquées</h3>
+                <div class="diseases-grid">
+                    <div class="disease-card gls">
+                        <div class="disease-header">
+                            <span class="disease-emoji">🔴</span>
+                            <h4>Gray Leaf Spot</h4>
+                            <span class="scientific-name">Cercospora zeae-maydis</span>
+                        </div>
+                        <div class="disease-body">
+                            <p><strong>Symptômes:</strong> Lésions rectangulaires grises avec bordures sombres</p>
+                            <p><strong>Impact:</strong> 15-60% de réduction du rendement</p>
+                            <div class="severity high">Sévérité: Élevée</div>
+                        </div>
+                    </div>
+                    
+                    <div class="disease-card nlb">
+                        <div class="disease-header">
+                            <span class="disease-emoji">🔵</span>
+                            <h4>Northern Leaf Blight</h4>
+                            <span class="scientific-name">Exserohilum turcicum</span>
+                        </div>
+                        <div class="disease-body">
+                            <p><strong>Symptômes:</strong> Lésions elliptiques de couleur brun-gris</p>
+                            <p><strong>Impact:</strong> Jusqu'à 50% de perte de rendement</p>
+                            <div class="severity high">Sévérité: Élevée</div>
+                        </div>
+                    </div>
+                    
+                    <div class="disease-card nls">
+                        <div class="disease-header">
+                            <span class="disease-emoji">🟢</span>
+                            <h4>Northern Leaf Spot</h4>
+                            <span class="scientific-name">Bipolaris zeicola</span>
+                        </div>
+                        <div class="disease-body">
+                            <p><strong>Symptômes:</strong> Petites taches circulaires à ovales</p>
+                            <p><strong>Impact:</strong> 10-25% de perte de rendement</p>
+                            <div class="severity medium">Sévérité: Modérée</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AgriDiagnostic IA</h4>
+                    <p>Solution d'intelligence artificielle pour l'agriculture de précision</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Performance</h4>
+                    <ul>
+                        <li>Précision: 99.37%</li>
+                        <li>Temps de réponse: <5s</li>
+                        <li>3 maladies détectées</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li>Documentation</li>
+                        <li>API Documentation</li>
+                        <li>Contact Support</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AgriDiagnostic IA. Développé pour l'agriculture moderne.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="static/js/main.js"></script>
+</body>
+</html>

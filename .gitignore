@@ -1,0 +1,91 @@
+# GITIGNORE OPTIMISÉ POUR GITHUB
+# Généré automatiquement pour éviter les gros fichiers
+
+# === DATASETS (TROP VOLUMINEUX) ===
+Dataset/
+Dataset_Original/
+data/Dataset/
+*.csv
+*.xlsx
+# Utiliser GitHub LFS pour les gros datasets
+
+# === MODÈLES ENTRAÎNÉS (GROS FICHIERS) ===
+*.pth
+*.pkl
+*.h5
+*.model
+*.weights
+results/*/
+# Utiliser GitHub LFS ou GitHub Releases pour les modèles
+
+# === MODÈLES QUANTIFIÉS (RÉGÉNÉRABLES) ===
+quantized_models*/
+*_quantized.pth
+
+# === VISUALISATIONS GÉNÉRÉES ===
+visualizations/**/*.png
+visualizations/**/*.jpg
+visualizations/**/*.pdf
+training_curves/
+confusion_matrices/
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# === LOGS ET CACHE ===
+*.log
+logs/
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/.pytest_cache/
+.cache/
+
+# === FICHIERS TEMPORAIRES ===
+**/temp/
+**/tmp/
+**/*_temp*
+**/*_backup*
+**/*_old*
+**/.DS_Store
+**/Thumbs.db
+
+# === ENVIRONNEMENTS VIRTUELS ===
+venv/
+env/
+.env
+.venv
+conda-meta/
+
+# === NOTEBOOKS CHECKPOINTS ===
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# === DOSSIERS BUILD ===
+build/
+dist/
+*.egg-info/
+
+# === FICHIERS IDE ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# === FICHIERS DE CONFIGURATION LOCAUX ===
+config_local.py
+.env.local
+
+# === RAPPORTS VOLUMINEUX ===
+**/analysis_report.json
+**/project_analysis_report.json
+**/quantization_report.json
+
+# === GARDER SEULEMENT ===
+# - Code source (.py)
+# - Documentation (.md, .txt)
+# - Configuration (requirements.txt, setup.py)
+# - Scripts de déploiement
+# - Petits fichiers d'exemple
