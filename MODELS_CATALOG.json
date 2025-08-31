@@ -1,0 +1,53 @@
+{
+  "release_info": {
+    "version": "v1.0",
+    "release_date": "2025-08-31",
+    "total_models": 7,
+    "total_size_mb": 562.8000000000001,
+    "github_releases_url": "https://github.com/rayenhizaoui/Internship-Final-Project-2025/releases/tag/v1.0"
+  },
+  "models": {
+    "deit3_quantized.pth": {
+      "size_mb": 84.5,
+      "description": "DeiT3 Vision Transformer quantized model"
+    },
+    "densenet121_quantized.pth": {
+      "size_mb": 28.1,
+      "description": "DenseNet121 CNN quantized model"
+    },
+    "maxvit_quantized.pth": {
+      "size_mb": 54.6,
+      "description": "MaxViT hybrid model quantized"
+    },
+    "mvitv2_quantized.pth": {
+      "size_mb": 49.8,
+      "description": "MViTv2 Vision Transformer quantized"
+    },
+    "resnet50_quantized.pth": {
+      "size_mb": 92.0,
+      "description": "ResNet50 CNN quantized model"
+    },
+    "vgg16_quantized.pth": {
+      "size_mb": 174.1,
+      "description": "VGG16 CNN quantized model"
+    },
+    "xception_quantized.pth": {
+      "size_mb": 79.7,
+      "description": "Xception CNN quantized model"
+    }
+  },
+  "usage_instructions": {
+    "automatic_download": "python download_models.py",
+    "manual_download": "Visit GitHub Releases page and download individual files",
+    "requirements": [
+      "requests",
+      "tqdm",
+      "torch"
+    ],
+    "storage_location": "quantized_models_all/"
+  },
+  "model_loading": {
+    "example": "model = torch.jit.load('quantized_models_all/mobilevit_quantized.pth')",
+    "note": "Models are already optimized and ready for inference"
+  }
+}

@@ -12,7 +12,33 @@ Système d'intelligence artificielle pour la classification automatique des mala
 ## 🚀 Démarrage Rapide
 
 ### Installation
+```
+
+## 📦 Modèles Volumineux (GitHub Releases)
+
+Les modèles >25MB sont hébergés sur **GitHub Releases** :
+
+### 🚀 Téléchargement Automatique
 ```bash
+python download_models.py
+```
+
+### 📋 Modèles Disponibles
+| Modèle | Taille | Type |
+|--------|--------|------|
+| DeiT3 | 84.5 MB | Vision Transformer |
+| ResNet50 | 92.0 MB | CNN |
+| VGG16 | 174.1 MB | CNN |
+| Xception | 79.7 MB | CNN |
+| MaxViT | 54.6 MB | Hybrid |
+| MViTv2 | 49.8 MB | Vision Transformer |
+| DenseNet121 | 28.1 MB | CNN |
+
+### 🔗 Accès Direct
+- **Releases**: [GitHub Releases](https://github.com/rayenhizaoui/Internship-Final-Project-2025/releases)
+- **Catalogue**: [MODELS_CATALOG.json](MODELS_CATALOG.json)
+- **Instructions**: [GITHUB_RELEASES_SETUP.md](GITHUB_RELEASES_SETUP.md)
+bash
 git clone https://github.com/rayenhizaoui/corn-disease-classification.git
 cd corn-disease-classification
 pip install -r requirements.txt
@@ -108,3 +134,19 @@ Ce projet est sous licence MIT. Voir `LICENSE` pour plus d'informations.
 ---
 
 ⭐ N'hésitez pas à donner une étoile si ce projet vous a aidé !
+
+
+## 🤖 Modèles Quantifiés
+
+Ce projet inclut des modèles optimisés par quantification :
+
+- **8 modèles CNN/ViT** quantifiés en INT8
+- **Réduction de taille** : ~75% 
+- **Performance préservée** : 95%+
+- **Documentation** : [MODELS_README.md](MODELS_README.md)
+
+### Utilisation Rapide
+```bash
+python quantize_production.py  # Quantifier les modèles
+python launch_app.py          # Lancer l'application web
+```
